@@ -1,63 +1,68 @@
 package com.emp.demo.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.emp.demo.entity.Employee;
 import com.emp.demo.entity.EmployeeTask;
+import com.emp.demo.repository.EmployeeRepository;
 
 
 @Service
 public  class EmployeeService  {
 	
 
-	
-	public List<Employee> employee = new ArrayList<Employee>();
-    public List<EmployeeTask> task = new ArrayList<EmployeeTask>();
+	@Autowired
+	EmployeeRepository employeeRepository;
 	
     
-    
 	
-public String readData(Employee emp3) {
+	public List<Employee> getAllEmpoyee()
+    {
 		
-		employee.add(emp3);
-		return "Data added successfully";
+		return employeeRepository.getAllEmployee();
 	}
 	
-public String editData(Employee emp) {
-	employee.stream().filter(i -> i.getId() == emp.getId()).forEach(i ->{ 
-		i.setFirstname(emp.getFirstname());
-		i.setLastname(emp.getLastname());
-		i.setAge(emp.getAge());
-		i.setAddress(emp.getAddress());
-	});
 	
-	return "Data updated successfully";
+    public Employee addEmployeeDetails(Employee employeeObject)
+    {
+		
+		return employeeRepository.addEmployeeDetails(employeeObject);
 	
-}
+    }
+	
 
-   public List<EmployeeTask> getTask() {
-	     return task;
-      }
+    public Employee editEmployeeDetails(Employee employeeObject) {
+	    
+    	return employeeRepository.editEmployeeDetails(employeeObject);
+    }
+    
+    public Employee getEmployee( int id) 
+    {
+    	
+ 	    return employeeRepository.getEmployee(id);
+    }
+    
+    
 
- 
-   public Employee getEmp( int id) {
-	
-	   return employee.stream().filter(i -> i.getId() == id).findFirst().get();
-}
-
-      public List<Employee> getData() {
-	
-      	return employee;
+   public List<EmployeeTask> getAllTask() 
+   {
+	     
+	   return employeeRepository.getAllTask();
    }
 
+
+   public List<Employee> getEmployeeDetailsByPagelimit(int limit1, int limit2) {
+	
+	return employeeRepository.getEmployeeDetailsBypagelimit(limit1,limit2);
+   }
+
+
+
  
-
-
 }
 
 

@@ -6,23 +6,12 @@ public class Employee {
 	private String firstname;
 	private String lastname;
 	private int age;
-	private String address;
-	
-
-	
-	public Employee() {
-		super();
-	
-	}
-	
-	public Employee(int id, String firstname, String lastname, int age, String address) {
-		super();
-		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.age = age;
-		this.address = address;
-	}
+	private String phoneNumber;
+	private String email;
+    private int salary;
+	public AdressField address = new AdressField();
+    
+    
 	
 	public int getId() {
 		return id;
@@ -48,12 +37,26 @@ public class Employee {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getAddress() {
-		return address;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
 
+     
+			
+	
 }
